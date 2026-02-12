@@ -65,7 +65,7 @@
       border-radius: 6px; font-size: 10px; font-weight: 800; text-decoration: none; transition: all 0.2s ease;
     }
 
-    /* --- MASTERPLAN VIEWPORT (UNCHANGED SECTION) --- */
+    /* --- MASTERPLAN VIEWPORT --- */
     .viewport-box { 
       position: relative; width: 100%; height: 550px; background: var(--viewport-bg); 
       border-radius: var(--radius); border: 2px solid var(--border); 
@@ -109,7 +109,7 @@
       grid-template-columns: 1fr; 
       gap: 20px; 
       scroll-margin: 120px; 
-      align-items: stretch; /* Forces equal bottom alignment */
+      align-items: stretch; 
     }
     
     @media (min-width: 1024px) { 
@@ -160,7 +160,7 @@
     .side-card { flex: 1; }
 
     .img-stage-side { 
-      flex: 1; /* Automatically matches Room Viewport bottom line */
+      flex: 1;
       display: flex; 
       align-items: center; 
       justify-content: center; 
@@ -171,7 +171,6 @@
       position: relative;
     }
 
-    /* Technical Data Sheet Button */
     .btn-tech-spec {
       position: absolute;
       bottom: 15px;
@@ -254,7 +253,7 @@
       <div style="display: flex; gap: 8px; margin-top: 8px;">
         <a href="Summary.pdf" target="_blank" class="btn-download">SUMMARY</a>
         <a href="Luxreport.pdf" target="_blank" class="btn-download">LUX REPORT</a>
-        <a href="Layout.pdf" target="_blank" class="btn-download">LAYOUT</a>
+        <a href="LayoutB02.png" target="_blank" class="btn-download">LAYOUT</a>
       </div>
     </div>
   </header>
@@ -262,7 +261,6 @@
   <div class="nav-section">
     <nav class="building-nav">
         <button class="btn-build active" onclick="switchBuilding(1)">B02 - NCO ACCOMMODATION</button>
-        <button class="btn-build" onclick="switchBuilding(2)">B03 - NCO AMENITIES</button>
     </nav>
     
     <section class="viewport-box" id="vpContainer">
@@ -358,41 +356,28 @@
   if (history.scrollRestoration) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
 
-const buildings = {
-  1: { 
-    id: "B01", prefix: "B1", suffix: "B02", rooms: 10,
-    names: ["Typical Bedroom", "Entrance/ Reception", "Main Corridor", "Toilet Area 01", "Toilet Area 02", "Service Area 01", "Service Area 02", "Service Area 03", "Security Control", "Supervisor Office"],
-    // REPLACE THIS: Replace the .fill() with your specific B02 links
-    specLinks: [
-      "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_DL_Gemini_05_Dec25.pdf",
-      "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_Downlights_DLS1_24-5db01992.pdf",
-      "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_Downlights_DLS1_24-5db01992.pdf",
-      "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_DL_Gemini_05_Dec25.pdf",
-      "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_DL_Gemini_05_Dec25.pdf",
-      "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_WP_Caliber_24.pdf",
-      "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_Downlights_DLS1_24-5db01992.pdf",
-      "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_WP_Caliber_24.pdf",
-      "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_Panel_BP10_24_R1.pdf",
-      "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_Panel_BP10_24_R1.pdf"
-    ]
-  },
-  2: { 
-    id: "B02", prefix: "B2", suffix: "B03", rooms: 10,
-    // REPLACE THIS: Replace the .fill() with your specific B03 links
-    specLinks: [
-      "https://b03-link-01.com",
-      "https://b03-link-02.com",
-      "https://b03-link-03.com",
-      "https://b03-link-04.com",
-      "https://b03-link-05.com",
-      "https://b03-link-06.com",
-      "https://b03-link-07.com",
-      "https://b03-link-08.com",
-      "https://b03-link-09.com",
-      "https://b03-link-10.com"
-    ]
-  }
-};
+  const buildings = {
+    1: { 
+      id: "B01", prefix: "B1", suffix: "B02", rooms: 10,
+      names: ["Typical Bedroom", "Entrance/ Reception", "Main Corridor", "Toilet Area 01", "Toilet Area 02", "Service Area 01", "Service Area 02", "Service Area 03", "Security Control", "Supervisor Office"],
+      specLinks: [
+        "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_DL_Gemini_05_Dec25.pdf",
+        "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_Downlights_DLS1_24-5db01992.pdf",
+        "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_Downlights_DLS1_24-5db01992.pdf",
+        "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_DL_Gemini_05_Dec25.pdf",
+        "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_DL_Gemini_05_Dec25.pdf",
+        "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_WP_Caliber_24.pdf",
+        "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_Downlights_DLS1_24-5db01992.pdf",
+        "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_WP_Caliber_24.pdf",
+        "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_Panel_BP10_24_R1.pdf",
+        "https://irp.cdn-website.com/2e271d71/files/uploaded/Frater_Panel_BP10_24_R1.pdf"
+      ]
+    },
+    2: { 
+      id: "B02", prefix: "B2", suffix: "B03", rooms: 10,
+      specLinks: Array(10).fill("https://www.google.com") 
+    }
+  };
 
   let currentBuild = 1;
   let currentRoom = 1;
@@ -451,7 +436,6 @@ const buildings = {
     const bData = buildings[currentBuild];
     const rId = String(currentRoom).padStart(2, '0');
     
-    // Feature Check: Loop logic for available images
     const testImg = new Image();
     testImg.src = `${bData.id}RM${rId}IM03.png`;
     testImg.onload = () => { maxImagesAvailable = 3; finishUpdate(); };
@@ -474,7 +458,6 @@ const buildings = {
         document.getElementById('calc_display').src = `${bData.prefix}RS${rId}.png`;
         document.getElementById('fixture_display').src = `${bData.prefix}FX${rId}.png`;
         
-        // Update Technical Spec Sheet link based on Building
         const techBtn = document.getElementById('tech_sheet_btn');
         if (bData.specLinks) {
           techBtn.href = bData.specLinks[currentRoom - 1];
